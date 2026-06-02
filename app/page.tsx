@@ -14,7 +14,10 @@ import { Careers } from "@/components/careers";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 
-export default function Home() {
+import { getTestimonials } from "@/app/dashboard/actions";
+
+export default async function Home() {
+  const data = await getTestimonials();
   return (
     <main className="min-h-screen">
       <Navigation />
@@ -24,7 +27,7 @@ export default function Home() {
       <TechStack />
       <Portfolio />
       <Pricing />
-      <Testimonials />
+      <Testimonials testimonials={data} />
       <Team />
       <Blog />
       <Booking />
