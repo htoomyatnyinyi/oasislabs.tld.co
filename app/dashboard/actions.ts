@@ -237,6 +237,81 @@ export async function deleteTestimonial(id: string) {
   revalidatePath("/");
 }
 
+// ─── Bookings ──────────────────────────────────────────────
+
+export async function getBookings() {
+  return prisma.booking.findMany({ orderBy: { createdAt: "desc" } });
+}
+
+export async function deleteBooking(id: string) {
+  await prisma.booking.delete({ where: { id } });
+  revalidatePath("/dashboard/bookings");
+}
+
+// ─── Contact Submissions ───────────────────────────────────
+
+export async function getContactSubmissions() {
+  return prisma.contactMessage.findMany({ orderBy: { createdAt: "desc" } });
+}
+
+export async function deleteContactSubmission(id: string) {
+  await prisma.contactMessage.delete({ where: { id } });
+  revalidatePath("/dashboard/messages");
+}
+
+// ─── Job Postings (Openings) ───────────────────────────────
+
+export async function getJobs() {
+  return prisma.job.findMany({ orderBy: { createdAt: "desc" } });
+}
+
+export async function createJob(formData: FormData) {
+  const title = formData.get("title") as string;
+  await prisma.job.create({
+    data: {
+      title,
+      slug: slugify(title),
+      location: formData.get("location") as string,
+      type: (formData.get("type") as any) || "FULL_TIME",
+      salary: formData.get("salary") as string,
+      description: formData.get("description") as string,
+      remote: formData.get("remote") === "on",
+      departmentId: (formData.get("departmentId") as string) || undefined,
+    },
+  });
+  revalidatePath("/dashboard/jobs");
+  revalidatePath("/");
+  redirect("/dashboard/jobs");
+}
+
+export async function deleteJob(id: string) {
+  await prisma.job.delete({ where: { id } });
+  revalidatePath("/dashboard/jobs");
+  revalidatePath("/");
+}
+
+// ─── Job Applications ──────────────────────────────────────
+
+export async function getJobApplications() {
+  return prisma.jobApplication.findMany({ orderBy: { createdAt: "desc" } });
+}
+
+export async function deleteJobApplication(id: string) {
+  await prisma.jobApplication.delete({ where: { id } });
+  revalidatePath("/dashboard/applications");
+}
+
+// ─── Newsletter Subscribers ────────────────────────────────
+
+export async function getSubscribers() {
+  return prisma.newsletterSubscriber.findMany({ orderBy: { createdAt: "desc" } });
+}
+
+export async function deleteSubscriber(id: string) {
+  await prisma.newsletterSubscriber.delete({ where: { id } });
+  revalidatePath("/dashboard/subscribers");
+}
+
 // ─── Helpers ───────────────────────────────────────────────
 
 function splitCsv(val: string | null): string[] {

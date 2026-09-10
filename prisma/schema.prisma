@@ -483,3 +483,34 @@ model Booking {
 
   @@map("bookings")
 }
+
+// ==========================================
+// 12. NEWSLETTER SUBSCRIBERS
+// ==========================================
+model NewsletterSubscriber {
+  id        String   @id @default(uuid())
+  email     String   @unique
+
+  createdAt DateTime @default(now())
+
+  @@map("newsletter_subscribers")
+}
+
+// ==========================================
+// 13. JOB APPLICATIONS
+// ==========================================
+model JobApplication {
+  id          String   @id @default(uuid())
+  jobTitle    String
+  name        String
+  email       String
+  phone       String?
+  linkedin    String?
+  portfolio   String?
+  coverLetter String?  @db.Text
+  resumeUrl   String?
+
+  createdAt   DateTime @default(now())
+
+  @@map("job_applications")
+}

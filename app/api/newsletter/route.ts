@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 interface NewsletterData {
   email: string;
@@ -25,15 +26,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Here you would typically:
-    // 1. Check if email already exists in your newsletter list
-    // 2. Add to newsletter service (Mailchimp, ConvertKit, etc.)
-    // 3. Save to database
-    // 4. Send welcome email
-
-    console.log("Newsletter subscription:", {
-      email: data.email,
-      timestamp: new Date().toISOString()
+    // Upsert to avoid duplicates
+    await prisma.newsletterSubscriber.upsert({
+      where: { email: data.email.trim().toLowerCase() },
+      update: {},
+      create: { email: data.email.trim().toLowerCase() },
     });
 
     return NextResponse.json(

@@ -278,8 +278,26 @@ export function Careers() {
       : jobs.filter((job) => job.department === activeDepartment);
 
   const handleSubmitApplication = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setApplicationSubmitted(true);
+    try {
+      await fetch("/api/careers", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          jobId: selectedJob?.id || 1,
+          jobTitle: selectedJob?.title || "General",
+          name: applicationData.name,
+          email: applicationData.email,
+          phone: applicationData.phone,
+          linkedin: applicationData.linkedin,
+          portfolio: applicationData.portfolio,
+          coverLetter: applicationData.coverLetter,
+        }),
+      });
+      setApplicationSubmitted(true);
+    } catch (err) {
+      console.error(err);
+      setApplicationSubmitted(true);
+    }
   };
 
   return (

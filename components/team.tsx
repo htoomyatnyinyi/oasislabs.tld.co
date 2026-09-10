@@ -17,16 +17,16 @@ interface TeamMember {
   name: string;
   role: string;
   bio: string;
-  initials: string;
-  fullBio: string;
-  location: string;
-  experience: string;
-  skills: string[];
-  social: {
+  initials?: string | null;
+  fullBio?: string | null;
+  location?: string | null;
+  experience?: string | null;
+  skills?: string[];
+  social?: {
     linkedin?: string;
     twitter?: string;
     github?: string;
-  };
+  } | null;
 }
 
 // const team: TeamMember[] = [
@@ -137,8 +137,24 @@ interface TeamMember {
 //   },
 // ];
 
-export function Team({ teamMembers }: { teamMembers: TeamMember[] }) {
-  console.log("teamMembers: ", teamMembers);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function mapDbMember(raw: any): TeamMember {
+  const socials = raw.socials || raw.social || {};
+  return {
+    name: raw.name,
+    role: raw.role,
+    bio: raw.bio,
+    initials: raw.initials || raw.name?.split(" ").map((n: string) => n[0]).join(""),
+    fullBio: raw.fullBio,
+    location: raw.location,
+    experience: raw.experience,
+    skills: raw.skills || [],
+    social: typeof socials === "object" && socials !== null ? socials : {},
+  };
+}
+
+export function Team({ teamMembers: rawMembers }: { teamMembers: any[] }) {
+  const teamMembers = rawMembers.map(mapDbMember);
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   const scrollToContact = () => {

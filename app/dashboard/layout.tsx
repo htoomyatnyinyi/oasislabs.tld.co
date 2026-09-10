@@ -12,6 +12,10 @@ import {
   ArrowLeft,
   Menu,
   X,
+  Calendar,
+  Inbox,
+  Briefcase,
+  Mail,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -22,6 +26,11 @@ const navItems = [
   { href: "/dashboard/blog", label: "Blog Posts", icon: FileText },
   { href: "/dashboard/team", label: "Team", icon: Users },
   { href: "/dashboard/testimonials", label: "Testimonials", icon: MessageSquare },
+  { href: "/dashboard/bookings", label: "Bookings", icon: Calendar },
+  { href: "/dashboard/messages", label: "Messages", icon: Inbox },
+  { href: "/dashboard/applications", label: "Applications", icon: Briefcase },
+  { href: "/dashboard/jobs", label: "Job Openings", icon: Briefcase },
+  { href: "/dashboard/subscribers", label: "Subscribers", icon: Mail },
 ];
 
 export default function DashboardLayout({
