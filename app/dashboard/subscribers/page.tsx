@@ -1,16 +1,28 @@
 import { getSubscribers, deleteSubscriber } from "@/app/dashboard/actions";
+import { ExportCsvButton } from "@/components/ui/export-csv-button";
 import { Mail, Calendar, Trash2 } from "lucide-react";
 
 export default async function NewsletterSubscribersPage() {
   const subscribers = await getSubscribers();
 
+  const exportData = subscribers.map((s) => ({
+    ID: s.id,
+    Email: s.email,
+    SubscribedAt: new Date(s.createdAt).toISOString(),
+  }));
+
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight">Newsletter Subscribers</h1>
-        <p className="text-muted-foreground">
-          Email addresses subscribed to news and updates ({subscribers.length})
-        </p>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight">Newsletter Subscribers</h1>
+          <p className="text-muted-foreground">
+            Email addresses subscribed to news and updates ({subscribers.length})
+          </p>
+        </div>
+        {subscribers.length > 0 && (
+          <ExportCsvButton data={exportData} filename="newsletter_subscribers" />
+        )}
       </div>
 
       {subscribers.length === 0 ? (

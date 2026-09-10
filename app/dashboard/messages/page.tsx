@@ -1,16 +1,34 @@
 import { getContactSubmissions, deleteContactSubmission } from "@/app/dashboard/actions";
+import { ExportCsvButton } from "@/components/ui/export-csv-button";
 import { Mail, Phone, Calendar, Trash2 } from "lucide-react";
 
 export default async function ContactMessagesPage() {
   const submissions = await getContactSubmissions();
 
+  const exportData = submissions.map((m) => ({
+    ID: m.id,
+    FirstName: m.firstName,
+    LastName: m.lastName,
+    Email: m.email,
+    Company: m.company || "",
+    Service: m.service || "",
+    Budget: m.budget || "",
+    Message: m.message,
+    SubmittedAt: new Date(m.createdAt).toISOString(),
+  }));
+
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight">Contact Messages</h1>
-        <p className="text-muted-foreground">
-          Inquiries and messages submitted from the contact form ({submissions.length})
-        </p>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight">Contact Messages</h1>
+          <p className="text-muted-foreground">
+            Inquiries and messages submitted from the contact form ({submissions.length})
+          </p>
+        </div>
+        {submissions.length > 0 && (
+          <ExportCsvButton data={exportData} filename="contact_inquiries" />
+        )}
       </div>
 
       {submissions.length === 0 ? (

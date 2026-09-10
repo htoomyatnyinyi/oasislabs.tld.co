@@ -1,4 +1,5 @@
 import { createBlogPost } from "@/app/dashboard/actions";
+import { ImageUploader } from "@/components/ui/image-uploader";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
@@ -59,18 +60,7 @@ export default function NewBlogPostPage() {
             className="w-full rounded-lg border border-border bg-input px-4 py-2.5 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-y"
           />
         </div>
-        <div className="space-y-2">
-          <label htmlFor="image" className="text-sm font-medium">
-            Cover Image URL
-          </label>
-          <input
-            id="image"
-            name="image"
-            required
-            placeholder="https://..."
-            className="w-full rounded-lg border border-border bg-input px-4 py-2.5 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-          />
-        </div>
+        <ImageUploader name="image" label="Cover Image" />
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
             <label htmlFor="author" className="text-sm font-medium">

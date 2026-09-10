@@ -1,4 +1,5 @@
 import { createPortfolioItem } from "@/app/dashboard/actions";
+import { ImageUploader } from "@/components/ui/image-uploader";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
@@ -24,10 +25,7 @@ export default function NewPortfolioPage() {
           <label htmlFor="description" className="text-sm font-medium">Description</label>
           <textarea id="description" name="description" required rows={3} placeholder="Describe the project…" className="w-full rounded-lg border border-border bg-input px-4 py-2.5 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none" />
         </div>
-        <div className="space-y-2">
-          <label htmlFor="image" className="text-sm font-medium">Image URL</label>
-          <input id="image" name="image" required placeholder="https://..." className="w-full rounded-lg border border-border bg-input px-4 py-2.5 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50" />
-        </div>
+        <ImageUploader name="image" label="Project Image" />
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
             <label htmlFor="category" className="text-sm font-medium">Category</label>

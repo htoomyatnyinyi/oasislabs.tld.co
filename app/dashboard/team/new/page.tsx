@@ -1,4 +1,5 @@
 import { createTeamMember } from "@/app/dashboard/actions";
+import { ImageUploader } from "@/components/ui/image-uploader";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
@@ -62,18 +63,7 @@ export default function NewTeamMemberPage() {
             className="w-full rounded-lg border border-border bg-input px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
           />
         </div>
-        <div className="space-y-2">
-          <label htmlFor="image" className="text-sm font-medium">
-            Profile Image URL
-          </label>
-          <input
-            id="image"
-            name="image"
-            required
-            placeholder="https://..."
-            className="w-full rounded-lg border border-border bg-input px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
-          />
-        </div>
+        <ImageUploader name="image" label="Profile Image" />
 
         <div className="pt-4 border-t border-border">
           <h3 className="text-sm font-medium mb-3">Social Links (Optional)</h3>

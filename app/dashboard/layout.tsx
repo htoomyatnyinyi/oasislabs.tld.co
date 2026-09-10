@@ -16,6 +16,7 @@ import {
   Inbox,
   Briefcase,
   Mail,
+  LogOut,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -40,6 +41,11 @@ export default function DashboardLayout({
 }) {
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // If on login page, render full screen without dashboard sidebar and topbar
+  if (pathname === "/dashboard/login") {
+    return <>{children}</>;
+  }
 
   return (
     <div className="flex min-h-screen bg-background">
@@ -129,6 +135,16 @@ export default function DashboardLayout({
                 <span className="text-xs font-bold text-primary">A</span>
               </div>
               <span className="hidden text-sm text-muted-foreground sm:inline">Admin</span>
+              <button
+                onClick={() => {
+                  document.cookie = "dashboard_auth=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                  window.location.href = "/dashboard/login";
+                }}
+                className="ml-2 rounded-lg border border-border p-1.5 text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-colors"
+                title="Sign Out"
+              >
+                <LogOut className="h-4 w-4" />
+              </button>
             </div>
           </div>
         </div>
