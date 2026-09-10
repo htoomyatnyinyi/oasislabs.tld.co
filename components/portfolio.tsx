@@ -105,7 +105,25 @@ const projects: Project[] = [
   }
 ];
 
-export function Portfolio() {
+export function Portfolio({ portfolioData }: { portfolioData?: any[] }) {
+  const displayProjects =
+    portfolioData && portfolioData.length > 0
+      ? portfolioData.map((item) => ({
+          title: item.title,
+          category: item.category,
+          description: item.description,
+          image: item.image,
+          metrics: item.metrics || "Successful Project",
+          gradient: item.gradient || "from-cyan-500/20 to-blue-500/20",
+          tech: item.technologies || [],
+          results: item.results || [
+            { label: "Client Satisfaction", value: "100%" },
+          ],
+          challenge: item.challenge || item.description,
+          solution: item.solution || item.description,
+        }))
+      : projects;
+
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const scrollToContact = () => {
@@ -141,7 +159,7 @@ export function Portfolio() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
+          {displayProjects.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 20 }}

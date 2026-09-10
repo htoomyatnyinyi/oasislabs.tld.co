@@ -52,16 +52,21 @@ const technologies = [
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
   },
 
-  {
-    name: "ElysiaJS",
-    category: "backend",
-    color: "#2c2d3a",
-    logo: "https://elysiajs.com/img/logo.png",
-  },
+  // {
+  //   name: "ElysiaJS",
+  //   category: "backend",
+  //   color: "#2c2d3a",
+  //   logo: "https://elysiajs.com/img/logo.png",
+  // },
   // { name: "Python", category: "backend", color: "#3776AB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
   // { name: "Go", category: "backend", color: "#00ADD8", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" },
   // { name: "Java", category: "backend", color: "#007396", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
-  // { name: "Rust", category: "backend", color: "#000000", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg" },
+  {
+    name: "Rust",
+    category: "backend",
+    color: "#000000",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg",
+  },
   // { name: "Ruby", category: "backend", color: "#CC342D", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg" },
   // { name: "GraphQL", category: "backend", color: "#E10098", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" },
 
@@ -102,14 +107,20 @@ const technologies = [
     color: "#3DDC84",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg",
   },
+  {
+    name: "tauri2.0",
+    category: "mobile",
+    color: "#000000",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tauri/tauri-original.svg",
+  },
 
   // Cloud & DevOps
-  {
-    name: "AWS",
-    category: "cloud",
-    color: "#FF9900",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
-  },
+  // {
+  //   name: "AWS",
+  //   category: "cloud",
+  //   color: "#FF9900",
+  //   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+  // },
   // {
   //   name: "Google Cloud",
   //   category: "cloud",
@@ -122,6 +133,12 @@ const technologies = [
   //   color: "#0078D4",
   //   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
   // },
+  {
+    name: "Self-Host",
+    category: "cloud",
+    color: "#000000",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
+  },
   {
     name: "Docker",
     category: "cloud",
@@ -146,12 +163,12 @@ const technologies = [
     color: "#2088FF",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
   },
-  {
-    name: "Jenkins",
-    category: "cloud",
-    color: "#D24939",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg",
-  },
+  // {
+  //   name: "Jenkins",
+  //   category: "cloud",
+  //   color: "#D24939",
+  //   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg",
+  // },
 
   // Database
   {
@@ -196,12 +213,12 @@ const technologies = [
     color: "green",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-plain.svg",
   },
-  {
-    name: "Neon",
-    category: "database",
-    color: "#000000",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/neon/neon-plain.svg",
-  },
+  // {
+  //   name: "Neon",
+  //   category: "database",
+  //   color: "#000000",
+  //   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/neon/neon-plain.svg",
+  // },
 
   // AI & ML
   // {
@@ -226,7 +243,8 @@ const technologies = [
   //   name: "Ollama",
   //   category: "ai",
   //   color: "#000000",
-  //   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ollama/ollama-plain.svg",
+  //   logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ollama/ollama-original.svg",
+  //   // logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ollama/ollama-plain.svg",
   // },
   // {
   //   name: "scikit-learn",

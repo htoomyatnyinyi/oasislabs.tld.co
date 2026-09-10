@@ -1,4 +1,5 @@
 import { createTestimonial } from "../../actions";
+import { ImageUploader } from "@/components/ui/image-uploader";
 import Link from "next/link";
 
 const NewTestimonialPage = () => {
@@ -30,16 +31,7 @@ const NewTestimonialPage = () => {
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium" htmlFor="image">
-              Image URL
-            </label>
-            <input
-              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-              type="text"
-              name="image"
-              id="image"
-              placeholder="https://..."
-            />
+            <ImageUploader name="image" label="Author Avatar" />
           </div>
         </div>
 

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 interface ApplicationRequest {
   jobId: number;
@@ -33,34 +34,25 @@ export async function POST(request: Request) {
       );
     }
 
-    // In a real application, you would:
-    // 1. Store the application in a database
-    // 2. Upload resume to cloud storage
-    // 3. Send confirmation email to applicant
-    // 4. Notify HR/hiring manager
-    // 5. Integrate with ATS (Applicant Tracking System)
-
-    console.log("Job application received:", {
-      jobId: body.jobId,
-      jobTitle: body.jobTitle,
-      name: body.name,
-      email: body.email,
-      phone: body.phone || "Not provided",
-      linkedin: body.linkedin || "Not provided",
-      portfolio: body.portfolio || "Not provided",
-      hasCoverLetter: !!body.coverLetter,
-      hasResume: !!body.resumeUrl,
-      timestamp: new Date().toISOString()
+    // Save application to database
+    const application = await prisma.jobApplication.create({
+      data: {
+        jobTitle: body.jobTitle,
+        name: body.name.trim(),
+        email: body.email.trim(),
+        phone: body.phone?.trim() || null,
+        linkedin: body.linkedin?.trim() || null,
+        portfolio: body.portfolio?.trim() || null,
+        coverLetter: body.coverLetter?.trim() || null,
+        resumeUrl: body.resumeUrl || null,
+      },
     });
-
-    // Simulate processing time
-    await new Promise((resolve) => setTimeout(resolve, 500));
 
     return NextResponse.json({
       success: true,
       message: "Application submitted successfully",
       application: {
-        id: `APP-${Date.now()}`,
+        id: application.id,
         jobId: body.jobId,
         jobTitle: body.jobTitle,
         applicantName: body.name,

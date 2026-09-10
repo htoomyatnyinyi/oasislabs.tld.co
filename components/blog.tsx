@@ -2,7 +2,18 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, Clock, ArrowRight, X, User, Tag, Share2, Bookmark, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  ArrowRight,
+  X,
+  User,
+  Tag,
+  Share2,
+  Bookmark,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -10,7 +21,8 @@ const blogPosts = [
   {
     id: 1,
     title: "The Future of AI in Enterprise Software Development",
-    excerpt: "Explore how artificial intelligence is revolutionizing the way businesses build and deploy software solutions.",
+    excerpt:
+      "Explore how artificial intelligence is revolutionizing the way businesses build and deploy software solutions.",
     content: `Artificial Intelligence is no longer a futuristic concept—it's reshaping enterprise software development today. From automated code generation to intelligent testing frameworks, AI tools are enabling development teams to work faster and smarter than ever before.
 
 Key trends we're seeing in 2024:
@@ -26,18 +38,20 @@ Key trends we're seeing in 2024:
 5. **Predictive Maintenance**: Using machine learning to anticipate system failures and optimize performance proactively.
 
 The enterprises that embrace these technologies today will have a significant competitive advantage tomorrow. At NexaTech, we're helping our clients integrate AI capabilities into their development pipelines, resulting in 40% faster time-to-market and 60% reduction in post-deployment issues.`,
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop",
     category: "AI & Machine Learning",
     author: "Sarah Chen",
     authorRole: "CTO",
     date: "March 15, 2024",
     readTime: "8 min read",
-    tags: ["AI", "Enterprise", "Development", "Innovation"]
+    tags: ["AI", "Enterprise", "Development", "Innovation"],
   },
   {
     id: 2,
     title: "Migrating Legacy Systems to Cloud: A Complete Guide",
-    excerpt: "Learn the best practices for modernizing your legacy infrastructure with minimal disruption to your business.",
+    excerpt:
+      "Learn the best practices for modernizing your legacy infrastructure with minimal disruption to your business.",
     content: `Legacy system migration is one of the most challenging yet rewarding transformations an organization can undertake. Done right, it unlocks new capabilities, reduces costs, and positions your business for future growth.
 
 **Understanding the Migration Journey**
@@ -68,18 +82,20 @@ Before diving into technical details, it's crucial to understand that migration 
 - Have a clear rollback strategy
 
 Our recent migration project for a Fortune 500 financial services company resulted in 45% infrastructure cost reduction and 99.99% uptime improvement.`,
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop",
     category: "Cloud Solutions",
     author: "Michael Rodriguez",
     authorRole: "Cloud Architect",
     date: "March 10, 2024",
     readTime: "12 min read",
-    tags: ["Cloud", "Migration", "Legacy Systems", "AWS"]
+    tags: ["Cloud", "Migration", "Legacy Systems", "AWS"],
   },
   {
     id: 3,
     title: "Building Secure Applications: Zero Trust Architecture",
-    excerpt: "Discover how Zero Trust principles can protect your applications from modern cyber threats.",
+    excerpt:
+      "Discover how Zero Trust principles can protect your applications from modern cyber threats.",
     content: `In an era where traditional perimeter-based security is no longer sufficient, Zero Trust Architecture has emerged as the gold standard for protecting enterprise applications and data.
 
 **The Core Principle: Never Trust, Always Verify**
@@ -107,18 +123,20 @@ Phase 4: Create security policies
 Phase 5: Monitor and maintain
 
 Organizations implementing Zero Trust have seen an average 50% reduction in breach impact and 40% faster threat detection.`,
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=400&fit=crop",
     category: "Cybersecurity",
     author: "David Park",
     authorRole: "Security Lead",
     date: "March 5, 2024",
     readTime: "10 min read",
-    tags: ["Security", "Zero Trust", "Architecture", "Best Practices"]
+    tags: ["Security", "Zero Trust", "Architecture", "Best Practices"],
   },
   {
     id: 4,
     title: "React Server Components: A Game Changer for Web Apps",
-    excerpt: "Understanding how React Server Components improve performance and developer experience.",
+    excerpt:
+      "Understanding how React Server Components improve performance and developer experience.",
     content: `React Server Components represent a paradigm shift in how we build React applications. By moving rendering to the server, we can significantly improve performance, reduce bundle sizes, and enhance the user experience.
 
 **What Are Server Components?**
@@ -150,18 +168,20 @@ Use Client Components for:
 - Browser-only APIs
 
 Our team has achieved 60% reduction in JavaScript bundle sizes and 40% improvement in Largest Contentful Paint (LCP) by adopting Server Components in client projects.`,
-    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=400&fit=crop",
     category: "Development",
     author: "Emily Watson",
     authorRole: "Lead Developer",
     date: "February 28, 2024",
     readTime: "7 min read",
-    tags: ["React", "Server Components", "Performance", "Web Development"]
+    tags: ["React", "Server Components", "Performance", "Web Development"],
   },
   {
     id: 5,
     title: "Scaling Mobile Apps for Millions of Users",
-    excerpt: "Technical strategies for building mobile applications that can handle massive user growth.",
+    excerpt:
+      "Technical strategies for building mobile applications that can handle massive user growth.",
     content: `Building a mobile app that works for thousands of users is one thing—scaling it to handle millions is an entirely different challenge. Here's how to architect mobile applications for massive scale.
 
 **Architecture Principles for Scale:**
@@ -193,18 +213,20 @@ Our team has achieved 60% reduction in JavaScript bundle sizes and 40% improveme
 - Feature flag management
 
 We recently helped a fintech client scale from 50,000 to 5 million users in 18 months, maintaining sub-100ms API response times throughout the growth journey.`,
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=400&fit=crop",
     category: "Mobile Development",
     author: "James Liu",
     authorRole: "Mobile Architect",
     date: "February 20, 2024",
     readTime: "9 min read",
-    tags: ["Mobile", "Scaling", "Architecture", "Performance"]
+    tags: ["Mobile", "Scaling", "Architecture", "Performance"],
   },
   {
     id: 6,
     title: "DevOps Best Practices for 2024",
-    excerpt: "Modern DevOps strategies that are driving efficiency and reliability in software delivery.",
+    excerpt:
+      "Modern DevOps strategies that are driving efficiency and reliability in software delivery.",
     content: `DevOps continues to evolve rapidly, with new tools and practices emerging to meet the demands of modern software delivery. Here are the best practices that are making the biggest impact in 2024.
 
 **Platform Engineering Rise:**
@@ -235,30 +257,68 @@ AI is automating incident response, predicting outages, and optimizing resource 
 - Change failure rate
 
 Organizations adopting these practices are seeing 200x more frequent deployments with 24x faster recovery times.`,
-    image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&h=400&fit=crop",
     category: "DevOps",
     author: "Alex Thompson",
     authorRole: "DevOps Lead",
     date: "February 15, 2024",
     readTime: "11 min read",
-    tags: ["DevOps", "CI/CD", "Automation", "Best Practices"]
-  }
+    tags: ["DevOps", "CI/CD", "Automation", "Best Practices"],
+  },
 ];
 
-const categories = ["All", "AI & Machine Learning", "Cloud Solutions", "Cybersecurity", "Development", "Mobile Development", "DevOps"];
+const categories = [
+  "All",
+  "AI & Machine Learning",
+  "Cloud Solutions",
+  "Cybersecurity",
+  "Development",
+  "Mobile Development",
+  "DevOps",
+];
 
-export function Blog() {
-  const [selectedPost, setSelectedPost] = useState<typeof blogPosts[0] | null>(null);
+export function Blog({ blogData }: { blogData?: any[] }) {
+  const displayPostsList =
+    blogData && blogData.length > 0
+      ? blogData.map((item, index) => ({
+          id: item.id || index + 1,
+          title: item.title,
+          excerpt: item.excerpt,
+          content: item.content,
+          image: item.image,
+          category: item.category || "General",
+          author: item.author || "OasisLabs Team",
+          authorRole: "Author",
+          date: item.publishedAt
+            ? new Date(item.publishedAt).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+              })
+            : "Recent",
+          readTime: "5 min read",
+          tags: item.tags || [item.category || "Tech"],
+        }))
+      : blogPosts;
+
+  const [selectedPost, setSelectedPost] = useState<
+    (typeof displayPostsList)[0] | null
+  >(null);
   const [activeCategory, setActiveCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 3;
 
-  const filteredPosts = activeCategory === "All" 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === activeCategory);
+  const filteredPosts =
+    activeCategory === "All"
+      ? displayPostsList
+      : displayPostsList.filter((post) => post.category === activeCategory);
 
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-  const paginatedPosts = filteredPosts.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage);
+  const paginatedPosts = filteredPosts.slice(
+    (currentPage - 1) * postsPerPage,
+    currentPage * postsPerPage,
+  );
 
   const handleCategoryChange = (category: string) => {
     setActiveCategory(category);
@@ -281,7 +341,8 @@ export function Blog() {
             Latest from Our Blog
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto text-pretty">
-            Stay updated with the latest trends, best practices, and insights from our team of experts.
+            Stay updated with the latest trends, best practices, and insights
+            from our team of experts.
           </p>
         </motion.div>
 
@@ -295,7 +356,7 @@ export function Blog() {
                 "px-4 py-2 rounded-full text-sm transition-all",
                 activeCategory === category
                   ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-muted-foreground hover:bg-secondary/80 hover:text-foreground"
+                  : "bg-secondary text-muted-foreground hover:bg-secondary/80 hover:text-foreground",
               )}
             >
               {category}
@@ -364,7 +425,7 @@ export function Blog() {
         {totalPages > 1 && (
           <div className="flex items-center justify-center gap-2 mt-12">
             <button
-              onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+              onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
               disabled={currentPage === 1}
               className="p-2 rounded-lg bg-secondary text-muted-foreground hover:bg-secondary/80 disabled:opacity-50 disabled:cursor-not-allowed"
             >
@@ -378,14 +439,16 @@ export function Blog() {
                   "w-10 h-10 rounded-lg text-sm font-medium transition-all",
                   currentPage === page
                     ? "bg-primary text-primary-foreground"
-                    : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+                    : "bg-secondary text-muted-foreground hover:bg-secondary/80",
                 )}
               >
                 {page}
               </button>
             ))}
             <button
-              onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(totalPages, prev + 1))
+              }
               disabled={currentPage === totalPages}
               className="p-2 rounded-lg bg-secondary text-muted-foreground hover:bg-secondary/80 disabled:opacity-50 disabled:cursor-not-allowed"
             >
@@ -445,13 +508,20 @@ export function Blog() {
                     {selectedPost.author}, {selectedPost.authorRole}
                   </span>
                 </div>
-                <h2 className="text-3xl font-bold mb-6 text-balance">{selectedPost.title}</h2>
+                <h2 className="text-3xl font-bold mb-6 text-balance">
+                  {selectedPost.title}
+                </h2>
                 <div className="prose prose-invert max-w-none">
-                  {selectedPost.content.split('\n\n').map((paragraph, index) => (
-                    <p key={index} className="text-muted-foreground mb-4 leading-relaxed">
-                      {paragraph}
-                    </p>
-                  ))}
+                  {selectedPost.content
+                    .split("\n\n")
+                    .map((paragraph, index) => (
+                      <p
+                        key={index}
+                        className="text-muted-foreground mb-4 leading-relaxed"
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
                 </div>
                 <div className="flex flex-wrap gap-2 mt-8 pt-6 border-t border-border">
                   {selectedPost.tags.map((tag) => (

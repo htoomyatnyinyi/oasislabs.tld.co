@@ -13,19 +13,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'NexaTech | Software Development & Technology Solutions',
-  description: 'We craft exceptional digital experiences through cutting-edge technology, innovative design, and strategic thinking. Custom software development, cloud solutions, mobile apps, and AI/ML services.',
-  keywords: ['software development', 'cloud solutions', 'mobile apps', 'AI', 'machine learning', 'custom software', 'technology consulting'],
-  authors: [{ name: 'NexaTech' }],
+  title: 'OasisLabs | Enterprise Software Development & Cloud Solutions',
+  description: 'OasisLabs crafts exceptional digital experiences through cutting-edge technology, innovative design, and strategic thinking. Custom software development, cloud solutions, mobile apps, and AI/ML services.',
+  keywords: ['software development', 'cloud solutions', 'mobile apps', 'AI', 'machine learning', 'custom software', 'OasisLabs', 'tech consultancy'],
+  authors: [{ name: 'OasisLabs Team' }],
   openGraph: {
-    title: 'NexaTech | Software Development & Technology Solutions',
-    description: 'Transform your vision into reality with our cutting-edge software solutions.',
+    title: 'OasisLabs | Enterprise Software & Technology Solutions',
+    description: 'Transforming businesses with scalable software, cloud infrastructure, and modern AI engineering.',
+    url: 'https://oasislabs.co',
+    siteName: 'OasisLabs',
+    images: [
+      {
+        url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=630&fit=crop',
+        width: 1200,
+        height: 630,
+        alt: 'OasisLabs Banner',
+      },
+    ],
+    locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NexaTech | Software Development & Technology Solutions',
-    description: 'Transform your vision into reality with our cutting-edge software solutions.',
+    title: 'OasisLabs | Enterprise Software Development',
+    description: 'Transforming businesses with scalable software, cloud infrastructure, and modern AI engineering.',
+    images: ['https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=630&fit=crop'],
   },
 }
 

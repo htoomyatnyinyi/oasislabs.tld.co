@@ -1,7 +1,7 @@
 import { getBlogPosts, deleteBlogPost } from "@/app/dashboard/actions";
 import { DeleteButton } from "@/app/dashboard/_components/delete-button";
 import Link from "next/link";
-import { Plus, Pencil } from "lucide-react";
+import { Plus, Pencil, ExternalLink } from "lucide-react";
 import { format } from "date-fns";
 
 export default async function BlogPage() {
@@ -39,7 +39,8 @@ export default async function BlogPage() {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-border bg-secondary/50">
-                <th className="px-4 py-3 text-left font-medium text-muted-foreground">Title</th>
+                <th className="px-4 py-3 text-left font-medium text-muted-foreground">Post</th>
+                <th className="hidden px-4 py-3 text-left font-medium text-muted-foreground md:table-cell">Author</th>
                 <th className="hidden px-4 py-3 text-left font-medium text-muted-foreground md:table-cell">Category</th>
                 <th className="hidden px-4 py-3 text-left font-medium text-muted-foreground lg:table-cell">Status</th>
                 <th className="hidden px-4 py-3 text-left font-medium text-muted-foreground lg:table-cell">Date</th>
@@ -50,19 +51,31 @@ export default async function BlogPage() {
               {posts.map((post) => (
                 <tr key={post.id} className="hover:bg-secondary/30 transition-colors">
                   <td className="px-4 py-3">
-                    <div>
-                      <p className="font-medium">{post.title}</p>
-                      <p className="text-xs text-muted-foreground line-clamp-1 mt-0.5">{post.excerpt}</p>
+                    <div className="flex items-center gap-3">
+                      {post.image && (
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="h-10 w-14 rounded-md object-cover border border-border"
+                        />
+                      )}
+                      <div>
+                        <p className="font-medium">{post.title}</p>
+                        <p className="text-xs text-muted-foreground line-clamp-1 mt-0.5">{post.excerpt}</p>
+                      </div>
                     </div>
                   </td>
+                  <td className="hidden px-4 py-3 text-xs md:table-cell font-medium">
+                    {post.author}
+                  </td>
                   <td className="hidden px-4 py-3 md:table-cell">
-                    <span className="rounded-full bg-chart-4/10 px-2 py-0.5 text-xs text-chart-4">{post.category}</span>
+                    <span className="rounded-full bg-chart-4/10 px-2.5 py-1 text-xs font-semibold text-chart-4">{post.category}</span>
                   </td>
                   <td className="hidden px-4 py-3 lg:table-cell">
                     {post.publishedAt ? (
-                      <span className="rounded-full bg-green-500/10 px-2 py-0.5 text-xs text-green-400">Published</span>
+                      <span className="rounded-full bg-green-500/10 px-2.5 py-1 text-xs font-semibold text-green-400">Published</span>
                     ) : (
-                      <span className="rounded-full bg-yellow-500/10 px-2 py-0.5 text-xs text-yellow-400">Draft</span>
+                      <span className="rounded-full bg-yellow-500/10 px-2.5 py-1 text-xs font-semibold text-yellow-400">Draft</span>
                     )}
                   </td>
                   <td className="hidden px-4 py-3 text-xs text-muted-foreground lg:table-cell">
@@ -70,6 +83,15 @@ export default async function BlogPage() {
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex items-center justify-end gap-2">
+                      <Link
+                        href="/#blog"
+                        target="_blank"
+                        className="inline-flex items-center gap-1 rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
+                        title="View on website"
+                      >
+                        <ExternalLink className="h-3.5 w-3.5" />
+                        View
+                      </Link>
                       <Link
                         href={`/dashboard/blog/${post.id}/edit`}
                         className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium hover:bg-secondary transition-colors"
