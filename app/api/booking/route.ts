@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 interface BookingRequest {
   name: string;
@@ -31,22 +32,17 @@ export async function POST(request: Request) {
       );
     }
 
-    // In a real application, you would:
-    // 1. Check calendar availability
-    // 2. Create a calendar event
-    // 3. Send confirmation emails
-    // 4. Store the booking in a database
-    // 5. Integrate with a scheduling service (Calendly, Cal.com, etc.)
-
-    console.log("Booking received:", {
-      name: body.name,
-      email: body.email,
-      company: body.company || "Not provided",
-      message: body.message || "No message",
-      meetingType: body.meetingType,
-      date: body.date,
-      time: body.time,
-      timestamp: new Date().toISOString()
+    // Save booking in database
+    const newBooking = await prisma.booking.create({
+      data: {
+        name: body.name.trim(),
+        email: body.email.trim(),
+        company: body.company?.trim() || null,
+        message: body.message?.trim() || null,
+        meetingType: body.meetingType,
+        date: body.date,
+        time: body.time,
+      },
     });
 
     // Simulate processing time

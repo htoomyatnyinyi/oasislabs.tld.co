@@ -189,7 +189,29 @@ const services: Service[] = [
   // },
 ];
 
-export function Services() {
+const ICON_MAP: Record<string, React.ElementType> = {
+  Code2,
+  Cloud,
+  Smartphone,
+  Brain,
+  Shield,
+  Zap,
+};
+
+export function Services({ servicesData }: { servicesData?: any[] }) {
+  const displayServices =
+    servicesData && servicesData.length > 0
+      ? servicesData.map((item) => ({
+          icon: ICON_MAP[item.icon] || Code2,
+          title: item.title,
+          description: item.description,
+          features: item.features || [],
+          benefits: item.benefits || [],
+          technologies: item.technologies || [],
+          process: item.process || [],
+        }))
+      : services;
+
   const [selectedService, setSelectedService] = useState<Service | null>(null);
 
   const scrollToContact = () => {
@@ -225,7 +247,7 @@ export function Services() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
+          {displayServices.map((service, index) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 20 }}

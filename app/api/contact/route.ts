@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 interface ContactFormData {
   firstName: string;
@@ -59,21 +60,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Here you would typically:
-    // 1. Save to database
-    // 2. Send email notification
-    // 3. Add to CRM
-    // 4. Send auto-reply to user
-
-    // For now, we'll log the submission and return success
-    console.log("Contact form submission:", {
-      name: `${data.firstName} ${data.lastName}`,
-      email: data.email,
-      company: data.company || "Not provided",
-      service: data.service || "Not specified",
-      budget: data.budget || "Not specified",
-      message: data.message,
-      timestamp: new Date().toISOString()
+    // Save submission to database
+    await prisma.contactMessage.create({
+      data: {
+        firstName: data.firstName.trim(),
+        lastName: data.lastName.trim(),
+        email: data.email.trim(),
+        company: data.company?.trim() || null,
+        service: data.service?.trim() || null,
+        budget: data.budget?.trim() || null,
+        message: data.message.trim(),
+      },
     });
 
     return NextResponse.json(

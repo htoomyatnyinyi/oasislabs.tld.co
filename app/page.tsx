@@ -14,22 +14,36 @@ import { Careers } from "@/components/careers";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 
-import { getTestimonials } from "@/app/dashboard/actions";
+import {
+  getTestimonials,
+  getTeamMembers,
+  getServices,
+  getPortfolioItems,
+  getBlogPosts,
+} from "@/app/dashboard/actions";
 
 export default async function Home() {
-  const data = await getTestimonials();
+  const [testimonials, teamMembers, services, portfolioItems, blogPosts] =
+    await Promise.all([
+      getTestimonials(),
+      getTeamMembers(),
+      getServices(),
+      getPortfolioItems(),
+      getBlogPosts(),
+    ]);
+
   return (
     <main className="min-h-screen">
       <Navigation />
       <Hero />
-      <Services />
+      <Services servicesData={services} />
       <About />
       <TechStack />
-      <Portfolio />
+      <Portfolio portfolioData={portfolioItems} />
       <Pricing />
-      <Testimonials testimonials={data} />
-      <Team />
-      <Blog />
+      <Testimonials testimonials={testimonials} />
+      <Team teamMembers={teamMembers} />
+      <Blog blogData={blogPosts} />
       <Booking />
       <FAQ />
       <Careers />

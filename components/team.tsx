@@ -29,115 +29,116 @@ interface TeamMember {
   };
 }
 
-const team: TeamMember[] = [
-  {
-    name: "Htoo Myat Nyi Nyi",
-    role: "CEO & Founder",
-    bio: "5+ years experience in IT industry.",
-    initials: "HMNN",
-    fullBio:
-      "Htoo Myat Nyi Nyi is a visionary leader with over 5 years of experience in the technology industry. Before founding NexaTech, she served as VP of Product at Google, where she led a team of 200+ engineers building products used by billions.",
-    location: "San Francisco, CA",
-    experience: "5+ years",
-    skills: [
-      "Strategic Planning",
-      "Product Vision",
-      "Team Leadership",
-      "Fundraising",
-    ],
-    social: {
-      linkedin: "https://linkedin.com",
-      twitter: "https://twitter.com",
-    },
-  },
-  {
-    name: "David Kim",
-    role: "CTO & Co-Founder",
-    bio: "Full-stack architect. Previously at Amazon and Microsoft.",
-    initials: "DK",
-    fullBio:
-      "David is a world-class engineer with deep expertise in distributed systems and cloud architecture. He previously led the AWS Lambda team at Amazon and was a principal engineer at Microsoft working on Azure.",
-    location: "Seattle, WA",
-    experience: "18+ years",
-    skills: [
-      "System Architecture",
-      "Cloud Infrastructure",
-      "AI/ML",
-      "Security",
-    ],
-    social: {
-      linkedin: "https://linkedin.com",
-      github: "https://github.com",
-    },
-  },
-  {
-    name: "Maria Santos",
-    role: "VP of Engineering",
-    bio: "Engineering leader with expertise in scalable systems.",
-    initials: "MS",
-    fullBio:
-      "Maria leads our engineering organization with a focus on building high-performing teams and delivering quality at scale. She previously built and led engineering teams at Stripe and Airbnb.",
-    location: "New York, NY",
-    experience: "12+ years",
-    skills: ["Engineering Management", "Agile", "DevOps", "Scalability"],
-    social: {
-      linkedin: "https://linkedin.com",
-      twitter: "https://twitter.com",
-      github: "https://github.com",
-    },
-  },
-  {
-    name: "James Wilson",
-    role: "Head of Design",
-    bio: "Award-winning designer. 10+ years in product design.",
-    initials: "JW",
-    fullBio:
-      "James brings creative excellence to every project. His work has been recognized by Fast Company, Awwwards, and the Design Week awards. He previously led design at IDEO and Spotify.",
-    location: "Los Angeles, CA",
-    experience: "12+ years",
-    skills: [
-      "Product Design",
-      "UX Research",
-      "Design Systems",
-      "Brand Strategy",
-    ],
-    social: {
-      linkedin: "https://linkedin.com",
-      twitter: "https://twitter.com",
-    },
-  },
-  {
-    name: "Priya Patel",
-    role: "Head of AI/ML",
-    bio: "PhD in Machine Learning. Led AI teams at Meta.",
-    initials: "PP",
-    fullBio:
-      "Priya holds a PhD from Stanford and is an expert in applied machine learning. She led the recommendation systems team at Meta and has published over 30 papers in top AI conferences.",
-    location: "Palo Alto, CA",
-    experience: "10+ years",
-    skills: ["Machine Learning", "Deep Learning", "NLP", "Computer Vision"],
-    social: {
-      linkedin: "https://linkedin.com",
-      github: "https://github.com",
-    },
-  },
-  {
-    name: "Robert Chang",
-    role: "VP of Operations",
-    bio: "Operations expert. MBA from Stanford Business School.",
-    initials: "RC",
-    fullBio:
-      "Robert ensures our operations run smoothly and efficiently. With his MBA from Stanford and experience at McKinsey, he brings strategic thinking and operational excellence to everything we do.",
-    location: "San Francisco, CA",
-    experience: "14+ years",
-    skills: ["Operations", "Strategy", "Finance", "Business Development"],
-    social: {
-      linkedin: "https://linkedin.com",
-    },
-  },
-];
+// const team: TeamMember[] = [
+//   {
+//     name: "Htoo Myat Nyi Nyi",
+//     role: "CEO & Founder",
+//     bio: "5+ years experience in IT industry.",
+//     initials: "HMNN",
+//     fullBio:
+//       "Htoo Myat Nyi Nyi is a visionary leader with over 5 years of experience in the technology industry. Before founding NexaTech, she served as VP of Product at Google, where she led a team of 200+ engineers building products used by billions.",
+//     location: "San Francisco, CA",
+//     experience: "5+ years",
+//     skills: [
+//       "Strategic Planning",
+//       "Product Vision",
+//       "Team Leadership",
+//       "Fundraising",
+//     ],
+//     social: {
+//       linkedin: "https://linkedin.com",
+//       twitter: "https://twitter.com",
+//     },
+//   },
+//   {
+//     name: "David Kim",
+//     role: "CTO & Co-Founder",
+//     bio: "Full-stack architect. Previously at Amazon and Microsoft.",
+//     initials: "DK",
+//     fullBio:
+//       "David is a world-class engineer with deep expertise in distributed systems and cloud architecture. He previously led the AWS Lambda team at Amazon and was a principal engineer at Microsoft working on Azure.",
+//     location: "Seattle, WA",
+//     experience: "18+ years",
+//     skills: [
+//       "System Architecture",
+//       "Cloud Infrastructure",
+//       "AI/ML",
+//       "Security",
+//     ],
+//     social: {
+//       linkedin: "https://linkedin.com",
+//       github: "https://github.com",
+//     },
+//   },
+//   {
+//     name: "Maria Santos",
+//     role: "VP of Engineering",
+//     bio: "Engineering leader with expertise in scalable systems.",
+//     initials: "MS",
+//     fullBio:
+//       "Maria leads our engineering organization with a focus on building high-performing teams and delivering quality at scale. She previously built and led engineering teams at Stripe and Airbnb.",
+//     location: "New York, NY",
+//     experience: "12+ years",
+//     skills: ["Engineering Management", "Agile", "DevOps", "Scalability"],
+//     social: {
+//       linkedin: "https://linkedin.com",
+//       twitter: "https://twitter.com",
+//       github: "https://github.com",
+//     },
+//   },
+//   {
+//     name: "James Wilson",
+//     role: "Head of Design",
+//     bio: "Award-winning designer. 10+ years in product design.",
+//     initials: "JW",
+//     fullBio:
+//       "James brings creative excellence to every project. His work has been recognized by Fast Company, Awwwards, and the Design Week awards. He previously led design at IDEO and Spotify.",
+//     location: "Los Angeles, CA",
+//     experience: "12+ years",
+//     skills: [
+//       "Product Design",
+//       "UX Research",
+//       "Design Systems",
+//       "Brand Strategy",
+//     ],
+//     social: {
+//       linkedin: "https://linkedin.com",
+//       twitter: "https://twitter.com",
+//     },
+//   },
+//   {
+//     name: "Priya Patel",
+//     role: "Head of AI/ML",
+//     bio: "PhD in Machine Learning. Led AI teams at Meta.",
+//     initials: "PP",
+//     fullBio:
+//       "Priya holds a PhD from Stanford and is an expert in applied machine learning. She led the recommendation systems team at Meta and has published over 30 papers in top AI conferences.",
+//     location: "Palo Alto, CA",
+//     experience: "10+ years",
+//     skills: ["Machine Learning", "Deep Learning", "NLP", "Computer Vision"],
+//     social: {
+//       linkedin: "https://linkedin.com",
+//       github: "https://github.com",
+//     },
+//   },
+//   {
+//     name: "Robert Chang",
+//     role: "VP of Operations",
+//     bio: "Operations expert. MBA from Stanford Business School.",
+//     initials: "RC",
+//     fullBio:
+//       "Robert ensures our operations run smoothly and efficiently. With his MBA from Stanford and experience at McKinsey, he brings strategic thinking and operational excellence to everything we do.",
+//     location: "San Francisco, CA",
+//     experience: "14+ years",
+//     skills: ["Operations", "Strategy", "Finance", "Business Development"],
+//     social: {
+//       linkedin: "https://linkedin.com",
+//     },
+//   },
+// ];
 
-export function Team() {
+export function Team({ teamMembers }: { teamMembers: TeamMember[] }) {
+  console.log("teamMembers: ", teamMembers);
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   const scrollToContact = () => {
@@ -173,7 +174,7 @@ export function Team() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {team.map((member, index) => (
+          {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
               initial={{ opacity: 0, y: 20 }}
@@ -197,7 +198,7 @@ export function Team() {
               </div>
 
               <div className="flex gap-3 mt-6 pt-4 border-t border-border">
-                {member.social.linkedin && (
+                {member.social?.linkedin && (
                   <a
                     href={member.social.linkedin}
                     target="_blank"
@@ -209,7 +210,7 @@ export function Team() {
                     <Linkedin className="w-4 h-4" />
                   </a>
                 )}
-                {member.social.twitter && (
+                {member.social?.twitter && (
                   <a
                     href={member.social.twitter}
                     target="_blank"
@@ -221,7 +222,7 @@ export function Team() {
                     <Twitter className="w-4 h-4" />
                   </a>
                 )}
-                {member.social.github && (
+                {member.social?.github && (
                   <a
                     href={member.social.github}
                     target="_blank"
@@ -328,7 +329,7 @@ export function Team() {
                 <div className="mb-6">
                   <h4 className="font-semibold mb-3">Expertise</h4>
                   <div className="flex flex-wrap gap-2">
-                    {selectedMember.skills.map((skill) => (
+                    {selectedMember.skills?.map((skill) => (
                       <span
                         key={skill}
                         className="px-3 py-1.5 bg-secondary rounded-lg text-sm font-medium"
@@ -343,7 +344,7 @@ export function Team() {
                   <span className="text-sm text-muted-foreground">
                     Connect:
                   </span>
-                  {selectedMember.social.linkedin && (
+                  {selectedMember.social?.linkedin && (
                     <a
                       href={selectedMember.social.linkedin}
                       target="_blank"
@@ -353,7 +354,7 @@ export function Team() {
                       <Linkedin className="w-5 h-5" />
                     </a>
                   )}
-                  {selectedMember.social.twitter && (
+                  {selectedMember.social?.twitter && (
                     <a
                       href={selectedMember.social.twitter}
                       target="_blank"
@@ -363,7 +364,7 @@ export function Team() {
                       <Twitter className="w-5 h-5" />
                     </a>
                   )}
-                  {selectedMember.social.github && (
+                  {selectedMember.social?.github && (
                     <a
                       href={selectedMember.social.github}
                       target="_blank"
