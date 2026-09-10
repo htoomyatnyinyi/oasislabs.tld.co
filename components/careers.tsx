@@ -258,9 +258,44 @@ const perks = [
   },
 ];
 
-export function Careers() {
+export function Careers({ jobsData }: { jobsData?: any[] }) {
+  const displayJobs =
+    jobsData && jobsData.length > 0
+      ? jobsData.map((item, index) => ({
+          id: item.id || index + 1,
+          title: item.title,
+          department: "all",
+          location: item.location || "Mawlamyine, Mon State, Myanmar",
+          type:
+            item.type === "FULL_TIME"
+              ? "Full-time"
+              : item.type === "PART_TIME"
+                ? "Part-time"
+                : item.type || "Full-time",
+          salary: item.salary || "Competitive",
+          remote: item.remote ?? true,
+          description: item.description,
+          responsibilities: [
+            "Build and maintain high-performance software features",
+            "Collaborate with team members to deliver quality applications",
+            "Participate in code reviews and engineering best practices",
+          ],
+          requirements: [
+            "Experience relevant to the job position",
+            "Strong problem-solving and communication skills",
+          ],
+          benefits: [
+            "Competitive salary package",
+            "Flexible working environment",
+            "Professional growth opportunities",
+          ],
+        }))
+      : jobs;
+
   const [activeDepartment, setActiveDepartment] = useState("all");
-  const [selectedJob, setSelectedJob] = useState<(typeof jobs)[0] | null>(null);
+  const [selectedJob, setSelectedJob] = useState<
+    (typeof displayJobs)[0] | null
+  >(null);
   const [showApplication, setShowApplication] = useState(false);
   const [applicationSubmitted, setApplicationSubmitted] = useState(false);
   const [applicationData, setApplicationData] = useState({
@@ -274,8 +309,8 @@ export function Careers() {
 
   const filteredJobs =
     activeDepartment === "all"
-      ? jobs
-      : jobs.filter((job) => job.department === activeDepartment);
+      ? displayJobs
+      : displayJobs.filter((job) => job.department === activeDepartment);
 
   const handleSubmitApplication = async () => {
     try {

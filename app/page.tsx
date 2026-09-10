@@ -20,17 +20,22 @@ import {
   getServices,
   getPortfolioItems,
   getBlogPosts,
+  getJobs,
 } from "@/app/dashboard/actions";
 
 export default async function Home() {
-  const [testimonials, teamMembers, services, portfolioItems, blogPosts] =
+  const [testimonials, teamMembers, services, portfolioItems, blogPosts, jobs] =
     await Promise.all([
       getTestimonials(),
       getTeamMembers(),
       getServices(),
       getPortfolioItems(),
       getBlogPosts(),
+      getJobs(),
     ]);
+
+  // ဤနေရာသည် အရေးကြီးပါသည်။ Decimal နှင့် Date objects များကို Client သို့ မပို့မီ String/Plain JSON အဖြစ်ပြောင်းပေးရပါမည်။
+  const safeJobsData = JSON.parse(JSON.stringify(jobs));
 
   return (
     <main className="min-h-screen">
@@ -46,7 +51,7 @@ export default async function Home() {
       <Blog blogData={blogPosts} />
       <Booking />
       <FAQ />
-      <Careers />
+      <Careers jobsData={safeJobsData} />
       <Contact />
       <Footer />
     </main>
