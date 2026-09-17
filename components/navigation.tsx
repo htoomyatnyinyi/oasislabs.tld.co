@@ -95,21 +95,41 @@ export function Navigation() {
   }, []);
 
   const scrollToSection = (href: string) => {
-    const id = href.replace("#", "");
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
     setIsMobileMenuOpen(false);
     setOpenDropdown(null);
+
+    const id = href.replace("#", "");
+
+    // Use short timeout so mobile drawer collapse animation doesn't cancel scroll
+    setTimeout(() => {
+      let element = document.getElementById(id);
+
+      // Fallback: If specific item ID doesn't exist on page, scroll to parent category section ID
+      if (!element) {
+        const parentGroup = navGroups.find((g) =>
+          g.items.some((item) => item.href === href),
+        );
+        if (parentGroup) {
+          const parentId = parentGroup.href.replace("#", "");
+          element = document.getElementById(parentId);
+        }
+      }
+
+      if (element) {
+        const yOffset = -80; // Account for fixed header height
+        const y =
+          element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+      }
+    }, 120);
   };
 
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm"
+        isScrolled || isMobileMenuOpen
+          ? "bg-background/95 backdrop-blur-xl border-b border-border shadow-md"
           : "bg-transparent",
       )}
     >
@@ -185,14 +205,14 @@ export function Navigation() {
 
           {/* Mobile Menu Toggle Button */}
           <button
-            className="md:hidden p-2 rounded-lg text-muted-foreground hover:bg-secondary"
+            className="md:hidden p-2 rounded-lg text-muted-foreground hover:bg-secondary focus:outline-none"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-6 h-6 text-foreground" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-6 h-6 text-foreground" />
             )}
           </button>
         </nav>
@@ -204,24 +224,28 @@ export function Navigation() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden overflow-hidden"
+              transition={{ duration: 0.25 }}
+              className="md:hidden overflow-y-auto max-h-[calc(100vh-80px)] pr-1"
             >
-              <div className="mt-4 pb-6 border-t border-border pt-4 space-y-4">
+              <div className="mt-4 pb-8 border-t border-border pt-4 space-y-5">
                 {navGroups.map((group) => (
-                  <div key={group.label} className="space-y-1.5">
-                    <p className="text-xs font-semibold text-primary uppercase tracking-wider px-2">
+                  <div key={group.label} className="space-y-2">
+                    <button
+                      onClick={() => scrollToSection(group.href)}
+                      className="text-xs font-bold text-primary uppercase tracking-wider px-2 hover:underline"
+                    >
                       {group.label}
-                    </p>
+                    </button>
                     <div className="grid grid-cols-1 gap-1 pl-2">
                       {group.items.map((item) => (
                         <button
                           key={item.label}
                           onClick={() => scrollToSection(item.href)}
                           className={cn(
-                            "text-left py-1.5 px-2 rounded-md text-sm transition-colors",
+                            "text-left py-2 px-3 rounded-lg text-sm font-medium transition-colors w-full",
                             activeSection === item.href.replace("#", "")
                               ? "text-primary font-semibold bg-primary/10"
-                              : "text-muted-foreground hover:text-foreground",
+                              : "text-muted-foreground hover:text-foreground hover:bg-secondary/50",
                           )}
                         >
                           {item.label}
@@ -233,7 +257,7 @@ export function Navigation() {
 
                 <Button
                   onClick={() => scrollToSection("#booking")}
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 w-full mt-2"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 w-full mt-4 py-3"
                 >
                   Book Consultation
                 </Button>
