@@ -97,7 +97,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section className="py-24 bg-secondary/30 overflow-hidden">
+    <section id="testimonials" className="py-24 bg-secondary/30 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
