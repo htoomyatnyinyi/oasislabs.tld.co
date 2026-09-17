@@ -11,85 +11,100 @@ const faqCategories = [
   { id: "services", label: "Services" },
   { id: "process", label: "Process" },
   { id: "pricing", label: "Pricing" },
-  { id: "support", label: "Support" }
+  { id: "support", label: "Support" },
 ];
 
 const faqs = [
   {
     category: "general",
-    question: "What industries does NexaTech specialize in?",
-    answer: "We serve a diverse range of industries including fintech, healthcare, e-commerce, logistics, manufacturing, and education. Our team has deep domain expertise in each sector, allowing us to understand unique challenges and deliver tailored solutions."
+    question: "What industries does oasislabs specialize in?",
+    answer:
+      "We serve a diverse range of industries including fintech, healthcare, e-commerce, logistics, manufacturing, and education. Our team has deep domain expertise in each sector, allowing us to understand unique challenges and deliver tailored solutions.",
   },
   {
     category: "general",
-    question: "Where is NexaTech located?",
-    answer: "Our headquarters is in San Francisco, with additional offices in New York, London, and Singapore. We work with clients globally and have experience delivering projects across different time zones and cultural contexts."
+    question: "Where is oasislabs located?",
+    answer:
+      "Our headquarters is in Mawlamyine, Myanmar. We work with clients globally and have experience delivering projects across different time zones and cultural contexts.",
   },
   {
     category: "general",
     question: "How large is your development team?",
-    answer: "We have over 150 full-time engineers, designers, and project managers. Additionally, we maintain a vetted network of specialized contractors for scaling projects that require niche expertise."
+    answer:
+      "We have over 5 full-time engineers, designers, and project managers. Additionally, we maintain a vetted network of specialized contractors for scaling projects that require niche expertise.",
   },
   {
     category: "services",
     question: "What technologies do you work with?",
-    answer: "We work with modern technology stacks including React, Next.js, Node.js, Python, Go, AWS, Google Cloud, Azure, Kubernetes, and more. Our team stays current with emerging technologies like AI/ML frameworks, blockchain, and edge computing."
+    answer:
+      "We work with modern technology stacks including React, Next.js, Node.js, Python, Go, AWS, Google Cloud, Azure, Kubernetes, and more. Our team stays current with emerging technologies like AI/ML frameworks, blockchain, and edge computing.",
   },
   {
     category: "services",
     question: "Do you provide ongoing maintenance and support?",
-    answer: "Yes, we offer comprehensive maintenance and support packages. These include 24/7 monitoring, regular security updates, performance optimization, and feature enhancements. Our SLA guarantees 99.9% uptime for critical systems."
+    answer:
+      "Yes, we offer comprehensive maintenance and support packages. These include 24/7 monitoring, regular security updates, performance optimization, and feature enhancements. Our SLA guarantees 99.9% uptime for critical systems.",
   },
   {
     category: "services",
     question: "Can you help with an existing project?",
-    answer: "Absolutely. We frequently take over or augment existing projects. We start with a thorough code audit and architecture review to understand the current state and develop a clear roadmap for improvements."
+    answer:
+      "Absolutely. We frequently take over or augment existing projects. We start with a thorough code audit and architecture review to understand the current state and develop a clear roadmap for improvements.",
   },
   {
     category: "process",
     question: "What is your development methodology?",
-    answer: "We use an Agile methodology with 2-week sprints. This includes daily standups, sprint planning, retrospectives, and continuous integration/deployment. We adapt our process to match your organization's workflow and preferences."
+    answer:
+      "We use an Agile methodology with 2-week sprints. This includes daily standups, sprint planning, retrospectives, and continuous integration/deployment. We adapt our process to match your organization's workflow and preferences.",
   },
   {
     category: "process",
     question: "How do you ensure project quality?",
-    answer: "Quality is ensured through multiple layers: code reviews by senior engineers, automated testing (unit, integration, E2E), manual QA testing, security audits, and performance benchmarking. We maintain 80%+ code coverage on all projects."
+    answer:
+      "Quality is ensured through multiple layers: code reviews by senior engineers, automated testing (unit, integration, E2E), manual QA testing, security audits, and performance benchmarking. We maintain 80%+ code coverage on all projects.",
   },
   {
     category: "process",
     question: "How long does a typical project take?",
-    answer: "Project timelines vary based on scope and complexity. A minimum viable product (MVP) typically takes 8-12 weeks, while enterprise applications can take 6-12 months. We provide detailed timeline estimates during our discovery phase."
+    answer:
+      "Project timelines vary based on scope and complexity. A minimum viable product (MVP) typically takes 8-12 weeks, while enterprise applications can take 6-12 months. We provide detailed timeline estimates during our discovery phase.",
   },
   {
     category: "pricing",
     question: "How do you structure project pricing?",
-    answer: "We offer three engagement models: fixed-price for well-defined projects, time-and-materials for evolving requirements, and dedicated team arrangements for long-term partnerships. We recommend the best model during our initial consultation."
+    answer:
+      "We offer three engagement models: fixed-price for well-defined projects, time-and-materials for evolving requirements, and dedicated team arrangements for long-term partnerships. We recommend the best model during our initial consultation.",
   },
   {
     category: "pricing",
     question: "What is your typical project budget range?",
-    answer: "Our projects typically range from $50,000 for focused MVPs to $2M+ for comprehensive enterprise solutions. We work with you to maximize value within your budget constraints and can phase projects to spread investment over time."
+    answer:
+      "Our projects typically range from $50,000 for focused MVPs to $2M+ for comprehensive enterprise solutions. We work with you to maximize value within your budget constraints and can phase projects to spread investment over time.",
   },
   {
     category: "pricing",
     question: "Do you require upfront payment?",
-    answer: "For fixed-price projects, we typically require a 30% deposit to begin work, with remaining payments tied to milestone deliveries. For time-and-materials engagements, we invoice bi-weekly or monthly based on your preference."
+    answer:
+      "For fixed-price projects, we typically require a 30% deposit to begin work, with remaining payments tied to milestone deliveries. For time-and-materials engagements, we invoice bi-weekly or monthly based on your preference.",
   },
   {
     category: "support",
     question: "What support options are available after launch?",
-    answer: "We offer tiered support packages: Basic (email support, 48h response), Professional (priority support, 24h response, monthly reviews), and Enterprise (24/7 support, dedicated account manager, proactive monitoring)."
+    answer:
+      "We offer tiered support packages: Basic (email support, 48h response), Professional (priority support, 24h response, monthly reviews), and Enterprise (24/7 support, dedicated account manager, proactive monitoring).",
   },
   {
     category: "support",
     question: "How do I report issues or request changes?",
-    answer: "All clients have access to our client portal where you can submit tickets, track progress, and communicate with your team. For urgent issues, Enterprise clients have a direct hotline for immediate assistance."
+    answer:
+      "All clients have access to our client portal where you can submit tickets, track progress, and communicate with your team. For urgent issues, Enterprise clients have a direct hotline for immediate assistance.",
   },
   {
     category: "support",
     question: "Do you provide training for our team?",
-    answer: "Yes, we include comprehensive knowledge transfer as part of every project. This includes documentation, video tutorials, and live training sessions. Additional training packages are available for broader organizational education."
-  }
+    answer:
+      "Yes, we include comprehensive knowledge transfer as part of every project. This includes documentation, video tutorials, and live training sessions. Additional training packages are available for broader organizational education.",
+  },
 ];
 
 export function FAQ() {
@@ -98,8 +113,10 @@ export function FAQ() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredFaqs = faqs.filter((faq) => {
-    const matchesCategory = activeCategory === "all" || faq.category === activeCategory;
-    const matchesSearch = searchQuery === "" || 
+    const matchesCategory =
+      activeCategory === "all" || faq.category === activeCategory;
+    const matchesSearch =
+      searchQuery === "" ||
       faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
       faq.answer.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
@@ -128,7 +145,8 @@ export function FAQ() {
             Frequently Asked Questions
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto text-pretty">
-            Find answers to common questions about our services, process, and pricing.
+            Find answers to common questions about our services, process, and
+            pricing.
           </p>
         </motion.div>
 
@@ -157,7 +175,7 @@ export function FAQ() {
                 "px-4 py-2 rounded-full text-sm transition-all",
                 activeCategory === category.id
                   ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-muted-foreground hover:bg-secondary/80 hover:text-foreground"
+                  : "bg-secondary text-muted-foreground hover:bg-secondary/80 hover:text-foreground",
               )}
             >
               {category.label}
@@ -177,7 +195,9 @@ export function FAQ() {
                 className="bg-card border border-border rounded-xl overflow-hidden"
               >
                 <button
-                  onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
+                  onClick={() =>
+                    setExpandedFaq(expandedFaq === index ? null : index)
+                  }
                   className="w-full flex items-center justify-between p-5 text-left"
                 >
                   <span className="font-medium pr-4">{faq.question}</span>
@@ -215,10 +235,7 @@ export function FAQ() {
               <p className="text-muted-foreground mb-4">
                 No questions found matching your search.
               </p>
-              <Button
-                variant="outline"
-                onClick={() => setSearchQuery("")}
-              >
+              <Button variant="outline" onClick={() => setSearchQuery("")}>
                 Clear Search
               </Button>
             </motion.div>
@@ -239,7 +256,8 @@ export function FAQ() {
           </div>
           <h3 className="text-xl font-semibold mb-2">Still have questions?</h3>
           <p className="text-muted-foreground mb-4">
-            Can&apos;t find the answer you&apos;re looking for? Our team is here to help.
+            Can&apos;t find the answer you&apos;re looking for? Our team is here
+            to help.
           </p>
           <Button
             onClick={scrollToContact}

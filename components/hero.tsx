@@ -73,7 +73,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size:[64px_64px]" />
 
@@ -239,8 +239,7 @@ export function Hero() {
             </button>
             <div className="aspect-video bg-secondary flex items-center justify-center">
               <iframe
-                width="920"
-                height="520"
+                className="w-full h-full min-h-[240px] md:min-h-[450px]"
                 src="https://www.youtube.com/embed/VOEi1FNS2vU?si=c-j1WvGgCjGfE3vG"
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

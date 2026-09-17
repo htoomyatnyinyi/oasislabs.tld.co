@@ -210,7 +210,7 @@ export function Booking() {
               {s < 4 && (
                 <div
                   className={cn(
-                    "w-16 h-1 mx-2 rounded-full transition-all",
+                    "w-6 sm:w-16 h-1 mx-1 sm:mx-2 rounded-full transition-all",
                     step > s ? "bg-primary" : "bg-secondary",
                   )}
                 />

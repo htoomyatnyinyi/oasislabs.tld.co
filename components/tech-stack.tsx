@@ -317,7 +317,7 @@ export function TechStack() {
         {/* Tech Grid */}
         <motion.div
           layout
-          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-3 sm:gap-4"
         >
           <AnimatePresence mode="popLayout">
             {filteredTechnologies.map((tech) => (

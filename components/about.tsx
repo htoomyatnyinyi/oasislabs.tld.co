@@ -148,7 +148,7 @@ export function About() {
               Engineering Excellence Since 2012
             </h2>
             <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-              NexaTech was founded with a simple mission: to help businesses
+              oasislabs was founded with a simple mission: to help businesses
               harness the power of technology to achieve their goals. Over the
               past decade, we&apos;ve grown from a small team of passionate
               developers to a global technology partner serving clients across

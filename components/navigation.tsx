@@ -13,10 +13,10 @@ const navGroups = [
     label: "Services",
     href: "#services",
     items: [
-      { href: "#services", label: "Full-Stack Web Development" },
-      { href: "#services", label: "Cloud Infrastructure & DevOps" },
-      { href: "#services", label: "Mobile App Development" },
-      { href: "#services", label: "AI & Machine Learning Integration" },
+      { href: "#full-stack-web-development", label: "Full-Stack Web Development" },
+      { href: "#cloud-infrastructure-devops", label: "Cloud Infrastructure & DevOps" },
+      { href: "#custom-software-development", label: "Custom Software Development" },
+      { href: "#cloud-solutions", label: "Cloud Solutions" },
     ],
   },
   {

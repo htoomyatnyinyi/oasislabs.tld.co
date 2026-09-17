@@ -2,7 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Quote, Star, ChevronLeft, ChevronRight, MessageSquarePlus, X, Check } from "lucide-react";
+import {
+  Quote,
+  Star,
+  ChevronLeft,
+  ChevronRight,
+  MessageSquarePlus,
+  X,
+  Check,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 // 1. Defined TypeScript interface matching your Prisma schema
@@ -24,6 +32,7 @@ interface TestimonialsProps {
 
 const logos = [
   "May Myo Makeup Artist",
+  "msocialnetworkmyanmar",
   "jobDiary",
   "Spotlight ERP/POS",
   "Spotlight Social Networking",
@@ -97,7 +106,10 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section id="testimonials" className="py-24 bg-secondary/30 overflow-hidden">
+    <section
+      id="testimonials"
+      className="py-24 bg-secondary/30 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -195,14 +207,14 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
             <>
               <button
                 onClick={goToPrev}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-secondary transition-colors z-10 shadow-sm"
+                className="absolute left-1 sm:left-2 md:left-0 top-1/2 -translate-y-1/2 md:-translate-x-6 w-10 h-10 md:w-12 md:h-12 rounded-full bg-card/90 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-secondary transition-colors z-10 shadow-sm"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={goToNext}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-secondary transition-colors z-10 shadow-sm"
+                className="absolute right-1 sm:right-2 md:right-0 top-1/2 -translate-y-1/2 md:translate-x-6 w-10 h-10 md:w-12 md:h-12 rounded-full bg-card/90 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-secondary transition-colors z-10 shadow-sm"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -350,7 +362,8 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
                   </div>
                   <h3 className="text-xl font-bold mb-2">Review Submitted!</h3>
                   <p className="text-muted-foreground text-sm mb-6">
-                    Thank you for sharing your experience. Your review will appear on our site once verified by our team.
+                    Thank you for sharing your experience. Your review will
+                    appear on our site once verified by our team.
                   </p>
                   <Button
                     onClick={() => {
@@ -371,22 +384,36 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
                   <form onSubmit={handleReviewSubmit} className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-1">
-                        <label className="text-xs font-semibold">Your Name *</label>
+                        <label className="text-xs font-semibold">
+                          Your Name *
+                        </label>
                         <input
                           type="text"
                           required
                           value={reviewForm.author}
-                          onChange={(e) => setReviewForm({ ...reviewForm, author: e.target.value })}
+                          onChange={(e) =>
+                            setReviewForm({
+                              ...reviewForm,
+                              author: e.target.value,
+                            })
+                          }
                           placeholder="John Doe"
                           className="w-full rounded-lg border border-border bg-secondary px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                         />
                       </div>
                       <div className="space-y-1">
-                        <label className="text-xs font-semibold">Role / Position</label>
+                        <label className="text-xs font-semibold">
+                          Role / Position
+                        </label>
                         <input
                           type="text"
                           value={reviewForm.role}
-                          onChange={(e) => setReviewForm({ ...reviewForm, role: e.target.value })}
+                          onChange={(e) =>
+                            setReviewForm({
+                              ...reviewForm,
+                              role: e.target.value,
+                            })
+                          }
                           placeholder="e.g. Founder, CEO"
                           className="w-full rounded-lg border border-border bg-secondary px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                         />
@@ -395,11 +422,18 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
 
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-1">
-                        <label className="text-xs font-semibold">Company Name</label>
+                        <label className="text-xs font-semibold">
+                          Company Name
+                        </label>
                         <input
                           type="text"
                           value={reviewForm.company}
-                          onChange={(e) => setReviewForm({ ...reviewForm, company: e.target.value })}
+                          onChange={(e) =>
+                            setReviewForm({
+                              ...reviewForm,
+                              company: e.target.value,
+                            })
+                          }
                           placeholder="e.g. Acme Inc."
                           className="w-full rounded-lg border border-border bg-secondary px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                         />
@@ -408,7 +442,12 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
                         <label className="text-xs font-semibold">Rating</label>
                         <select
                           value={reviewForm.rating}
-                          onChange={(e) => setReviewForm({ ...reviewForm, rating: Number(e.target.value) })}
+                          onChange={(e) =>
+                            setReviewForm({
+                              ...reviewForm,
+                              rating: Number(e.target.value),
+                            })
+                          }
                           className="w-full rounded-lg border border-border bg-secondary px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                         >
                           <option value={5}>5 Stars ★★★★★</option>
@@ -419,12 +458,19 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-xs font-semibold">Review Content *</label>
+                      <label className="text-xs font-semibold">
+                        Review Content *
+                      </label>
                       <textarea
                         required
                         rows={4}
                         value={reviewForm.content}
-                        onChange={(e) => setReviewForm({ ...reviewForm, content: e.target.value })}
+                        onChange={(e) =>
+                          setReviewForm({
+                            ...reviewForm,
+                            content: e.target.value,
+                          })
+                        }
                         placeholder="Tell us about your experience..."
                         className="w-full rounded-lg border border-border bg-secondary px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                       />
