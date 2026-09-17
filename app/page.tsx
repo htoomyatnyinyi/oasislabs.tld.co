@@ -15,7 +15,7 @@ import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 
 import {
-  getTestimonials,
+  getApprovedTestimonials,
   getTeamMembers,
   getServices,
   getPortfolioItems,
@@ -26,7 +26,7 @@ import {
 export default async function Home() {
   const [testimonials, teamMembers, services, portfolioItems, blogPosts, jobs] =
     await Promise.all([
-      getTestimonials(),
+      getApprovedTestimonials(),
       getTeamMembers(),
       getServices(),
       getPortfolioItems(),

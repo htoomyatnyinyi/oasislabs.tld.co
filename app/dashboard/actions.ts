@@ -198,6 +198,22 @@ export async function getTestimonials() {
   return prisma.testimonial.findMany({ orderBy: { createdAt: "desc" } });
 }
 
+export async function getApprovedTestimonials() {
+  return prisma.testimonial.findMany({
+    where: { isApproved: true },
+    orderBy: { createdAt: "desc" },
+  });
+}
+
+export async function toggleTestimonialApproval(id: string, isApproved: boolean) {
+  await prisma.testimonial.update({
+    where: { id },
+    data: { isApproved: !isApproved },
+  });
+  revalidatePath("/dashboard/testimonials");
+  revalidatePath("/");
+}
+
 export async function createTestimonial(formData: FormData) {
   await prisma.testimonial.create({
     data: {
@@ -207,6 +223,7 @@ export async function createTestimonial(formData: FormData) {
       content: formData.get("content") as string,
       rating: Number(formData.get("rating")) || 5,
       image: (formData.get("image") as string) || null,
+      isApproved: true, // Created directly by Admin -> Approved automatically!
     },
   });
   revalidatePath("/dashboard/testimonials");

@@ -137,9 +137,27 @@ export function Booking() {
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsBooked(true);
+    try {
+      await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          message: formData.message,
+          meetingType: selectedMeetingType?.title || "Consultation",
+          date: formatSelectedDate(),
+          time: selectedTime,
+        }),
+      });
+      setIsBooked(true);
+    } catch (err) {
+      console.error("Booking submit error:", err);
+      setIsBooked(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const formatSelectedDate = () => {

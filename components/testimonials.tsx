@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Quote, Star, ChevronLeft, ChevronRight, MessageSquarePlus, X, Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 // 1. Defined TypeScript interface matching your Prisma schema
 interface TestimonialData {
@@ -21,11 +22,45 @@ interface TestimonialsProps {
   testimonials: TestimonialData[];
 }
 
-const logos = ["Microsoft", "Google", "Amazon", "IBM", "Salesforce", "Oracle"];
+const logos = [
+  "May Myo Makeup Artist",
+  "jobDiary",
+  "Spotlight ERP/POS",
+  "Spotlight Social Networking",
+];
 
 export function Testimonials({ testimonials }: TestimonialsProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [showReviewModal, setShowReviewModal] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [reviewForm, setReviewForm] = useState({
+    author: "",
+    role: "",
+    company: "",
+    rating: 5,
+    content: "",
+  });
+
+  const handleReviewSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/testimonials", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reviewForm),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     if (!isAutoPlaying || testimonials.length <= 1) return;
@@ -77,10 +112,18 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 text-balance">
             Trusted by Industry Leaders
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg mb-6">
             Don't just take our word for it. Here is what our clients have to
             say about working with us.
           </p>
+
+          <Button
+            onClick={() => setShowReviewModal(true)}
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-md hover:bg-primary/90 transition-all"
+          >
+            <MessageSquarePlus className="w-4 h-4" />
+            Leave a Client Review
+          </Button>
         </motion.div>
 
         {/* Featured Testimonial Carousel */}
@@ -255,7 +298,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
           className="text-center"
         >
           <p className="text-sm text-muted-foreground mb-8">
-            Trusted by leading companies worldwide
+            Trusted by leading clients
           </p>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
             {logos.map((logo) => (
@@ -269,6 +312,147 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
           </div>
         </motion.div>
       </div>
+
+      {/* Client Review Submission Modal */}
+      <AnimatePresence>
+        {showReviewModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm"
+            onClick={() => {
+              setShowReviewModal(false);
+              setSubmitted(false);
+            }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="bg-card border border-border rounded-2xl max-w-lg w-full p-6 md:p-8 relative shadow-xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => {
+                  setShowReviewModal(false);
+                  setSubmitted(false);
+                }}
+                className="absolute top-4 right-4 p-2 hover:bg-secondary rounded-full transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {submitted ? (
+                <div className="text-center py-6">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Check className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">Review Submitted!</h3>
+                  <p className="text-muted-foreground text-sm mb-6">
+                    Thank you for sharing your experience. Your review will appear on our site once verified by our team.
+                  </p>
+                  <Button
+                    onClick={() => {
+                      setShowReviewModal(false);
+                      setSubmitted(false);
+                    }}
+                  >
+                    Done
+                  </Button>
+                </div>
+              ) : (
+                <>
+                  <h3 className="text-xl font-bold mb-1">Write a Review</h3>
+                  <p className="text-sm text-muted-foreground mb-6">
+                    Share your experience working with OasisLabs.
+                  </p>
+
+                  <form onSubmit={handleReviewSubmit} className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-1">
+                        <label className="text-xs font-semibold">Your Name *</label>
+                        <input
+                          type="text"
+                          required
+                          value={reviewForm.author}
+                          onChange={(e) => setReviewForm({ ...reviewForm, author: e.target.value })}
+                          placeholder="John Doe"
+                          className="w-full rounded-lg border border-border bg-secondary px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-xs font-semibold">Role / Position</label>
+                        <input
+                          type="text"
+                          value={reviewForm.role}
+                          onChange={(e) => setReviewForm({ ...reviewForm, role: e.target.value })}
+                          placeholder="e.g. Founder, CEO"
+                          className="w-full rounded-lg border border-border bg-secondary px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-1">
+                        <label className="text-xs font-semibold">Company Name</label>
+                        <input
+                          type="text"
+                          value={reviewForm.company}
+                          onChange={(e) => setReviewForm({ ...reviewForm, company: e.target.value })}
+                          placeholder="e.g. Acme Inc."
+                          className="w-full rounded-lg border border-border bg-secondary px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-xs font-semibold">Rating</label>
+                        <select
+                          value={reviewForm.rating}
+                          onChange={(e) => setReviewForm({ ...reviewForm, rating: Number(e.target.value) })}
+                          className="w-full rounded-lg border border-border bg-secondary px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                        >
+                          <option value={5}>5 Stars ★★★★★</option>
+                          <option value={4}>4 Stars ★★★★☆</option>
+                          <option value={3}>3 Stars ★★★☆☆</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-xs font-semibold">Review Content *</label>
+                      <textarea
+                        required
+                        rows={4}
+                        value={reviewForm.content}
+                        onChange={(e) => setReviewForm({ ...reviewForm, content: e.target.value })}
+                        placeholder="Tell us about your experience..."
+                        className="w-full rounded-lg border border-border bg-secondary px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                      />
+                    </div>
+
+                    <div className="flex gap-3 pt-2">
+                      <Button
+                        type="submit"
+                        disabled={submitting}
+                        className="bg-primary text-primary-foreground hover:bg-primary/90 flex-1"
+                      >
+                        {submitting ? "Submitting..." : "Submit Review"}
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={() => setShowReviewModal(false)}
+                      >
+                        Cancel
+                      </Button>
+                    </div>
+                  </form>
+                </>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
