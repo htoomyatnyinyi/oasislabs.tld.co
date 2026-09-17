@@ -202,6 +202,12 @@ export function Services({ servicesData }: { servicesData?: any[] }) {
   const displayServices =
     servicesData && servicesData.length > 0
       ? servicesData.map((item) => ({
+          slug:
+            item.slug ||
+            item.title
+              .toLowerCase()
+              .replace(/[^\w\s-]/g, "")
+              .replace(/[\s_]+/g, "-"),
           icon: ICON_MAP[item.icon] || Code2,
           title: item.title,
           description: item.description,
@@ -210,7 +216,13 @@ export function Services({ servicesData }: { servicesData?: any[] }) {
           technologies: item.technologies || [],
           process: item.process || [],
         }))
-      : services;
+      : services.map((s) => ({
+          ...s,
+          slug: s.title
+            .toLowerCase()
+            .replace(/[^\w\s-]/g, "")
+            .replace(/[\s_]+/g, "-"),
+        }));
 
   const [selectedService, setSelectedService] = useState<Service | null>(null);
 
@@ -250,6 +262,7 @@ export function Services({ servicesData }: { servicesData?: any[] }) {
           {displayServices.map((service, index) => (
             <motion.div
               key={service.title}
+              id={service.slug}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -267,7 +280,7 @@ export function Services({ servicesData }: { servicesData?: any[] }) {
               </p>
 
               <ul className="space-y-2 mb-6">
-                {service.features.map((feature) => (
+                {service.features.map((feature: any) => (
                   <li
                     key={feature}
                     className="flex items-center gap-2 text-sm text-muted-foreground"

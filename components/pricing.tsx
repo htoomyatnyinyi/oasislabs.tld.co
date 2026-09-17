@@ -186,7 +186,7 @@ export function Pricing() {
                 className={cn(
                   "relative bg-card border rounded-2xl p-8 transition-all",
                   plan.popular
-                    ? "border-primary shadow-lg shadow-primary/10 scale-105"
+                    ? "border-primary shadow-lg shadow-primary/10 md:scale-105"
                     : "border-border hover:border-primary/50",
                 )}
               >

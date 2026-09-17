@@ -1,4 +1,5 @@
 import { Navigation } from "@/components/navigation";
+import { ScrollProgress } from "@/components/scroll-progress";
 import { Hero } from "@/components/hero";
 import { Services } from "@/components/services";
 import { About } from "@/components/about";
@@ -15,7 +16,7 @@ import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 
 import {
-  getTestimonials,
+  getApprovedTestimonials,
   getTeamMembers,
   getServices,
   getPortfolioItems,
@@ -26,7 +27,7 @@ import {
 export default async function Home() {
   const [testimonials, teamMembers, services, portfolioItems, blogPosts, jobs] =
     await Promise.all([
-      getTestimonials(),
+      getApprovedTestimonials(),
       getTeamMembers(),
       getServices(),
       getPortfolioItems(),
@@ -38,7 +39,8 @@ export default async function Home() {
   const safeJobsData = JSON.parse(JSON.stringify(jobs));
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden w-full max-w-full">
+      <ScrollProgress />
       <Navigation />
       <Hero />
       <Services servicesData={services} />

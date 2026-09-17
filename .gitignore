@@ -5,14 +5,14 @@ __v0_jsx-dev-runtime.ts
 .snowflake/
 .v0-trash/
 .vercel/
-
+.env
 .env
 # Environment variables
 .env*.local
 
 # Common ignores
 node_modules
-.next/
+.next
 .DS_Store
 /lib/generated/prisma
 .env
